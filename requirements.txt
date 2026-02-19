@@ -1,0 +1,6 @@
+streamlit
+spacy
+textblob
+sentence-transformers
+scikit-learn
+pandas
