@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Environments
+.env
+venv/
+
+# Large files (if you add more models later)
+*.h5  # But we're uploading this one, so comment if needed
+
+# OS files
+.DS_Store
+Thumbs.db
