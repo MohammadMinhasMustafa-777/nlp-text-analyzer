@@ -13,8 +13,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-import spacy.cli
-spacy.cli.download("en_core_web_sm")                    # for streamlit community cloud deployment
 
 # Cache spaCy model (loads only once)
 @st.cache_resource
@@ -207,3 +205,4 @@ else:
 
 st.markdown("---")
 st.caption("Built with spaCy, TextBlob & sentence-transformers | A personal NLP tool")
+
