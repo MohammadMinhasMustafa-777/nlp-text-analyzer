@@ -18,7 +18,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 @st.cache_resource
 # Load spaCy model once (outside everything)
 def load_spacy_model():
-    return spacy.load("en_core_web_sm")                 # Safe: skips if already present, like if downloaded earlier via spacy.cli for streamlit community cloud deployment (it won't be an issue, if not downloaded, this command will do)
+    return spacy.load("en_core_web_sm")                 
 nlp = load_spacy_model()
 
 @st.cache_resource                                      # I used two cache_resource beacuse each @st.cache_resource function caches one specific thing. We need separate decorators so Streamlit caches each model independently (fast reloads for both).Two models → two caches. No sharing possible
@@ -205,4 +205,3 @@ else:
 
 st.markdown("---")
 st.caption("Built with spaCy, TextBlob & sentence-transformers | A personal NLP tool")
-
