@@ -26,7 +26,7 @@ A Streamlit web app that analyzes text using spaCy, TextBlob, and Sentence Trans
 
 ## Deployment
 - Deployed on Streamlit Community Cloud
-  Live app: https://nlp-text-analyzer-jznmqnqraktdmxjere5t3u.streamlit.app/
+  Live app: https://nlp-text-analyzer-by-minhas.streamlit.app/
 
 
 ## Model & Accuracy
