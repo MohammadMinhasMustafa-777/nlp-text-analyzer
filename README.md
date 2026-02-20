@@ -31,7 +31,7 @@ A Streamlit web app that analyzes text using spaCy, TextBlob, and Sentence Trans
 
 ## Model & Accuracy
 - NER + POS: `en_core_web_sm` (spaCy)
-- Sentence similarity: `paraphrase-MiniLM-L3-v3` (Sentence Transformers)
+- Sentence similarity: `all-MiniLM-L6-v2` (Sentence Transformers)
 - Sentiment: TextBlob polarity (-1 to +1)
 
 ## Notes
