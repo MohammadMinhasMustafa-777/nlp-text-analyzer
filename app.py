@@ -96,8 +96,14 @@ if st.button("Analyze"):
                     entity_list = defaultdict(list)
                     for entity in doc.ents:
                         entity_list[entity.label_].append(entity.text)
+                      
+                    # Convert to DataFrame-friendly format (rows = entities, columns = label + text)
+                    e_list = []
+                    for label, texts in entity_list.items():
+                      for text in texts:
+                        e_list.append({"Label" : label, "Text" : text})
                     # Making a dataframe (like a table)
-                    st.dataframe(pd.DataFrame(entity_list), use_container_width=True)
+                    st.dataframe(pd.DataFrame(e_list), use_container_width=True)
                 else:
                     st.info("No Named Entities found.")
             
@@ -205,3 +211,4 @@ else:
 
 st.markdown("---")
 st.caption("Built with spaCy, TextBlob & sentence-transformers | A personal NLP tool")
+
