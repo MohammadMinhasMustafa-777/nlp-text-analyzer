@@ -5,7 +5,6 @@
 
 import streamlit as st
 import spacy
-import spacy.cli
 from textblob import TextBlob                           # TextBlob is a quick mood reader — it gives a simple sentiment score (positive/negative) and subjectivity (opinion vs fact) in one line, without any training or complex setup.
 import pandas as pd
 import numpy as np
@@ -14,18 +13,20 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
+import spacy.cli
+spacy.cli.download("en_core_web_sm")                    # for streamlit community cloud deployment
+
 # Cache spaCy model (loads only once)
 @st.cache_resource
 # Load spaCy model once (outside everything)
 def load_spacy_model():
-    spacy.cli.download("en_core_web_sm")                # Safe: skips if already present
-    return spacy.load("en_core_web_sm")
+    return spacy.load("en_core_web_sm")                 # Safe: skips if already present, like if downloaded earlier via spacy.cli for streamlit community cloud deployment (it won't be an issue, if not downloaded, this command will do)
 nlp = load_spacy_model()
 
 @st.cache_resource                                      # I used two cache_resource beacuse each @st.cache_resource function caches one specific thing. We need separate decorators so Streamlit caches each model independently (fast reloads for both).Two models → two caches. No sharing possible
 # Load model once (outside button for simplicity)
 def load_sentence_embedder():
-    return SentenceTransformer("paraphrase-MiniLM-L3-v3")
+    return SentenceTransformer("all-MiniLM-L6-v2")
 embedder = load_sentence_embedder()
 
 
@@ -64,7 +65,7 @@ if st.button("Analyze"):
 ## Step 2: Token count + simple preview
             # Basic Stats (always show)
             token_count = len(doc)
-            st.subheader("Basic Stats")     # for clean layout
+            st.subheader("Basic Stats")                                           # for clean layout
             st.write(f"**Total Tokens:** {token_count}")
 
             # Showing first 20 cleaned tokens as proof
@@ -205,5 +206,4 @@ else:
     st.info("Enter some text and click Analyze to start.")
 
 st.markdown("---")
-
 st.caption("Built with spaCy, TextBlob & sentence-transformers | A personal NLP tool")
