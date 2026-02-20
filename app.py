@@ -25,7 +25,7 @@ nlp = load_spacy_model()
 @st.cache_resource                                      # I used two cache_resource beacuse each @st.cache_resource function caches one specific thing. We need separate decorators so Streamlit caches each model independently (fast reloads for both).Two models → two caches. No sharing possible
 # Load model once (outside button for simplicity)
 def load_sentence_embedder():
-    return SentenceTransformer("all-MiniLM-L6-v2")
+    return SentenceTransformer("paraphrase-MiniLM-L3-v3")
 embedder = load_sentence_embedder()
 
 
@@ -205,4 +205,5 @@ else:
     st.info("Enter some text and click Analyze to start.")
 
 st.markdown("---")
+
 st.caption("Built with spaCy, TextBlob & sentence-transformers | A personal NLP tool")
