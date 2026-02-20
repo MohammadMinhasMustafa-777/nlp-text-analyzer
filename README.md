@@ -15,7 +15,7 @@ A Streamlit web app that analyzes text using spaCy, TextBlob, and Sentence Trans
 ## Setup & Local Run
 1. Install dependencies: `pip install -r requirements.txt`
 2. Download spaCy model: `python -m spacy download en_core_web_sm`
-3. Run: `streamlit run streamlit_app.py`
+3. Run: `streamlit run app.py`
 4. Open: `http://localhost:8501`
 5. Paste text → Analyze
 
@@ -26,12 +26,12 @@ A Streamlit web app that analyzes text using spaCy, TextBlob, and Sentence Trans
 
 ## Deployment
 - Deployed on Streamlit Community Cloud
-  Live app: `https://nlp-text-analyzer-jznmqnqraktdmxjere5t3u.streamlit.app/`
+  Live app: https://nlp-text-analyzer-jznmqnqraktdmxjere5t3u.streamlit.app/
 
 
 ## Model & Accuracy
 - NER + POS: `en_core_web_sm` (spaCy)
-- Sentence similarity: `all-MiniLM-L6-v2` (Sentence Transformers)
+- Sentence similarity: `paraphrase-MiniLM-L3-v3` (Sentence Transformers)
 - Sentiment: TextBlob polarity (-1 to +1)
 
 ## Notes
